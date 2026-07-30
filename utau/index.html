@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TsukiAmdro アムドロ・ツキ — UTAU 音源企划</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0b0b12;
+            font-family: 'Segoe UI', -apple-system, sans-serif;
+            color: #e8e8f0;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        a {
+            color: #f0c060;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        h1 span {
+            color: #f0c060;
+        }
+        .subtitle {
+            color: #8888aa;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #1a1a28;
+            padding-bottom: 1.2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.2rem 0 1rem 0;
+            color: #f0c060;
+            border-left: 3px solid #f0c060;
+            padding-left: 0.8rem;
+        }
+        .card {
+            background: #12121e;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 600px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+        .label {
+            color: #8888aa;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .value {
+            font-size: 1rem;
+            color: #d0d0e8;
+            margin-top: 0.1rem;
+        }
+        .status-badge {
+            display: inline-block;
+            background: #1e2a1e;
+            color: #7bcb7b;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid #2a4a2a;
+        }
+        .status-badge.wip {
+            background: #2a2a1a;
+            color: #c0a060;
+            border-color: #4a4a2a;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #1a1a28;
+            margin: 2rem 0;
+        }
+        .footer {
+            color: #606080;
+            font-size: 0.85rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a28;
+        }
+        .footer a {
+            color: #8080a0;
+        }
+        .moon-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        ul, ol {
+            padding-left: 1.5rem;
+            color: #c0c0d8;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <a href="https://tsukineos.top" class="back-link">← 返回 Tsukine OS</a>
+
+    <span class="moon-icon">🌙</span>
+    <h1>TsukiAmdro <span>アムドロ・ツキ</span></h1>
+    <div class="subtitle">UTAU 音源企划 · 无中之人 · Indev 开发中</div>
+
+    <!-- 企划概要 -->
+    <div class="card">
+        <p><strong>TsukiAmdro</strong> 是一个与 Tsukine OS 同源的 UTAU 音源企划。</p>
+        <p style="margin-top: 0.5rem; color: #a0a0b8;">
+            企划定位为 <strong>“无中之人（无生物）音源”</strong>——不赋予固定人格，只提供声音素材，由使用者自行定义其角色与表达。
+        </p>
+        <p style="margin-top: 0.5rem; color: #a0a0b8;">
+            项目名 <strong>アムドロ・ツキ</strong>（Amudoro Tsuki）取自“Tsukine OS”的变体，延续月夜主题。
+        </p>
+    </div>
+
+    <!-- 状态 -->
+    <div class="card">
+        <span class="status-badge wip">🔄 Indev 开发中</span>
+        <span style="margin-left: 1rem; color: #8888aa; font-size: 0.9rem;">尚未公开配布</span>
+        <p style="margin-top: 0.6rem; color: #a0a0b8; font-size: 0.95rem;">
+            当前阶段：企划概念确定 · 录音方案准备中 · 原音设定未启动
+        </p>
+    </div>
+
+    <h2>📖 企划信息</h2>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">企划名称</div>
+            <div class="value">TsukiAmdro アムドロ・ツキ</div>
+        </div>
+        <div class="card">
+            <div class="label">类型</div>
+            <div class="value">无中之人（无生物）UTAU 音源</div>
+        </div>
+        <div class="card">
+            <div class="label">关联项目</div>
+            <div class="value"><a href="https://tsukineos.top">Tsukine OS</a></div>
+        </div>
+        <div class="card">
+            <div class="label">音源语言</div>
+            <div class="value">日本語（预定）</div>
+        </div>
+        <div class="card">
+            <div class="label">音源管理</div>
+            <div class="value">津時テオ (Tsutoki Teo)</div>
+        </div>
+        <div class="card">
+            <div class="label">角色设计</div>
+            <div class="value">未定（无生物方向，极简/符号化）</div>
+        </div>
+    </div>
+
+    <h2>🎵 角色设定（草案）</h2>
+    <div class="card">
+        <ul>
+            <li><strong>名称</strong>：TsukiAmdro アムドロ・ツキ</li>
+            <li><strong>象征</strong>：月牙 / 夜 / 声音的容器</li>
+            <li><strong>性别</strong>：无（中性）</li>
+            <li><strong>年龄</strong>：无设定</li>
+            <li><strong>身高 / 体重</strong>：无设定</li>
+            <li><strong>代表色</strong>：#f0c060（月牙色） / #0b0b12（夜底色）</li>
+            <li><strong>性格</strong>：无固定人格（由使用者赋予）</li>
+            <li><strong>概念</strong>：“你是月亮，你自己决定它圆缺。”</li>
+        </ul>
+    </div>
+
+    <h2>📂 企划进度</h2>
+    <div class="card">
+        <ul>
+            <li><strong>企划立项</strong>：✅ 已完成 (2026-07-31)</li>
+            <li><strong>录音方案</strong>：🔲 准备中</li>
+            <li><strong>原音设定</strong>：🔲 未开始</li>
+            <li><strong>配布页面</strong>：🔲 未开始</li>
+            <li><strong>公开配布</strong>：🔲 未定</li>
+        </ul>
+    </div>
+
+    <h2>📌 企划说明</h2>
+    <div class="card">
+        <p style="color: #b0b0c8;">
+            TsukiAmdro 是一个“无中之人”音源企划，与传统 UTAU 音源不同，它不预设固定的角色形象或人格。
+            使用者可以自由地为它赋予声音、性别、性格、故事——它是一面镜子，映照创作者的意图。
+        </p>
+        <p style="color: #b0b0c8; margin-top: 0.8rem;">
+            这一概念与 Tsukine OS 的设计哲学一致：系统本身不定义用户的使用方式，只提供一个可控的、可定制的环境。
+        </p>
+    </div>
+
+    <h2>🔗 关联链接</h2>
+    <div class="card">
+        <ul>
+            <li><a href="https://github.com/tsutokiteo/TsukineOS">Tsukine OS — GitHub</a></li>
+            <li><a href="https://tsukineos.top/docs">Tsukine OS — 文档</a></li>
+            <li><a href="https://github.com/tsutokiteo/TsukineOS/releases">Tsukine OS — Releases</a></li>
+        </ul>
+        <p style="margin-top: 0.8rem; color: #606080; font-size: 0.9rem;">
+            TsukiAmdro 音源企划的更新将在 Tsukine OS 官网及 GitHub 仓库发布。
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+        <p>🌙 TsukiAmdro アムドロ・ツキ · UTAU 音源企划</p>
+        <p><a href="https://tsukineos.top">Tsukine OS</a> · <a href="https://github.com/tsutokiteo/TsukineOS">GitHub</a></p>
+        <p style="margin-top:0.5rem; font-size:0.75rem; color:#505068;">Indev · 2026</p>
+    </div>
+
+</div>
+</body>
+</html>
