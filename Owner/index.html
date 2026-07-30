@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建者 · Tsukine OS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0b12;
+            font-family: 'Segoe UI', -apple-system, sans-serif;
+            color: #e8e8f0;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 750px;
+            width: 100%;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #606080;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: #f0c060;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: #1e1e2e;
+            border: 2px solid #2a2a3e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            color: #f0c060;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #f0f0f8;
+        }
+
+        .profile-info .handle {
+            color: #8888aa;
+            font-size: 1rem;
+            margin-top: 0.1rem;
+        }
+
+        .profile-info .handle a {
+            color: #8888aa;
+            text-decoration: none;
+        }
+
+        .profile-info .handle a:hover {
+            color: #f0c060;
+        }
+
+        .bio {
+            background: #12121e;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            color: #c8c8d8;
+            font-size: 0.95rem;
+        }
+
+        .bio strong {
+            color: #f0c060;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f0c060;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #1e1e2e;
+            padding-bottom: 0.4rem;
+        }
+
+        .contribution-wrap {
+            background: #12121e;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contribution-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            background: #0b0b12;
+        }
+
+        .contribution-wrap .fallback {
+            color: #606080;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .footer {
+            font-size: 0.8rem;
+            color: #505068;
+            text-align: center;
+            border-top: 1px solid #1a1a28;
+            padding-top: 2rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <a href="https://tsukineos.top" class="back-link">← 返回 Tsukine OS</a>
+
+        <div class="profile">
+            <div class="avatar">
+                <!-- 占位月牙，可替换为实际图片 -->
+                🌙
+            </div>
+            <div class="profile-info">
+                <h1>津時テオ</h1>
+                <div class="handle">
+                    <a href="https://github.com/tsutokiteo" target="_blank">@tsutokiteo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bio">
+    <p>
+        <strong>津時テオ</strong>，2010 年出生。<br>
+        从小学开始接触计算机，在音乐和代码之间反复横跳。
+    </p>
+    <p style="margin-top: 0.8rem;">
+        活跃于 <strong>ボカロ</strong> 圈，以翻唱调校为主，偶尔产出一些不太成型的 UTAU 音源。
+        做过 <strong>CVVC</strong> 标注，也试着搓过几个音源，成果大多停留在“能出声”阶段。
+    </p>
+    <p style="margin-top: 0.8rem;">
+        2026 年 7 月，出于一次编译失败，开始从零构建 <strong>Tsukine OS</strong>。
+        目前处于 <strong>Infdev → Alpha</strong> 的过渡阶段，主要目标是完成图形界面（GUI）和安装程序（TOSE）。
+    </p>
+    <p style="margin-top: 0.8rem; color: #8888aa; font-size: 0.9rem;">
+        目前就读于高中二年级，尚未决定是继续做系统还是回 Windows 画图标。
+    </p>
+    <p style="margin-top: 0.8rem; color: #8888aa; font-size: 0.9rem;">
+        🌙 月ね！
+    </p>
+        </div>
+  
+    </div>
+</body>
+</html>
