@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsukine OS 文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0b0b12;
+            font-family: 'Segoe UI', -apple-system, sans-serif;
+            color: #e8e8f0;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #f0c060;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        h1 span {
+            color: #f0c060;
+        }
+        .subtitle {
+            color: #8888aa;
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #1e1e2a;
+            padding-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem 0;
+            color: #f0c060;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #d0d0e8;
+        }
+        p, li {
+            color: #c0c0d8;
+            font-size: 1rem;
+        }
+        ul, ol {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+        code {
+            background: #1a1a28;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #e0c080;
+        }
+        pre {
+            background: #12121e;
+            border: 1px solid #1e1e2e;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            color: #c8c8d8;
+            margin: 0.8rem 0;
+        }
+        .cmd {
+            color: #7bcb7b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+        th {
+            background: #1a1a2a;
+            color: #f0c060;
+            text-align: left;
+            padding: 0.6rem 0.8rem;
+            border-bottom: 2px solid #2a2a3e;
+        }
+        td {
+            padding: 0.5rem 0.8rem;
+            border-bottom: 1px solid #1a1a28;
+            color: #c8c8d8;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid #f0c060;
+        }
+        .timeline-item {
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+        }
+        .timeline-item .ver {
+            font-weight: 700;
+            color: #f0c060;
+            font-size: 1.1rem;
+        }
+        .timeline-item .date {
+            color: #606080;
+            font-size: 0.85rem;
+            margin-left: 0.8rem;
+        }
+        .timeline-item .desc {
+            color: #b0b0c8;
+            font-size: 0.95rem;
+            margin-top: 0.1rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #1e2a1e;
+            color: #7bcb7b;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 12px;
+            border: 1px solid #2a4a2a;
+            margin-left: 0.5rem;
+        }
+        .badge-done {
+            background: #1a2a1a;
+            color: #5a8a5a;
+        }
+        .badge-wip {
+            background: #2a2a1a;
+            color: #c0a060;
+        }
+        .badge-future {
+            background: #1a1a2a;
+            color: #606080;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #1a1a28;
+            margin: 2.5rem 0;
+        }
+        .footer {
+            color: #606080;
+            font-size: 0.85rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a28;
+        }
+        .footer a {
+            color: #8080a0;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #f0c060;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .timeline {
+                padding-left: 1rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            td, th {
+                padding: 0.3rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <a href="https://tsukineos.top" class="back-link">← 返回 Tsukine OS</a>
+
+    <h1>Tsukine <span>OS</span></h1>
+    <div class="subtitle">文档 · 构建指南 · 命令参考 · 版本路线图</div>
+
+    <h2>📖 项目概述</h2>
+    <p>Tsukine OS 是一个基于 Linux 6.6 LTS 内核的个人操作系统项目，目标是为音乐创作者（UTAU / Vocaloid）提供轻量、可控的创作环境。</p>
+    <p>当前处于 <strong>Infdev 阶段</strong>（底层重构），已完成持久化存储、包管理工具、网络层重构，并已启动 ARM64 移植。</p>
+
+    <h2>🛠️ 核心命令</h2>
+    <table>
+        <tr><th>命令</th><th>功能</th><th>示例</th></tr>
+        <tr><td><code>taskmgr</code> / <code>tsukine_top</code></td><td>任务管理器</td><td><code>taskmgr -u</code>（用户进程）<br><code>taskmgr -c</code>（内核进程）</td></tr>
+        <tr><td><code>net</code> / <code>tsukine_net</code></td><td>网络配置守护进程</td><td><code>net &amp;</code></td></tr>
+        <tr><td><code>ping</code> / <code>tsukine_ping</code></td><td>ICMP 连通性测试</td><td><code>ping -c 4 8.8.8.8</code></td></tr>
+        <tr><td><code>iwr</code> / <code>tsukine_iwr</code></td><td>HTTP 下载</td><td><code>iwr http://example.com/file -o out.txt</code></td></tr>
+        <tr><td><code>tknpkg</code></td><td>包管理（安装/卸载/列表）</td><td><code>tknpkg install hello-1.0.0.tkn</code></td></tr>
+        <tr><td><code>tknpkkj</code></td><td>打包工具（生成 .tkn 包）</td><td><code>tknpkkj build mypkg/</code></td></tr>
+    </table>
+
+    <h2>📦 包管理</h2>
+    <p><code>tknpkg</code> 是 Tsukine OS 的包管理器，支持安装、卸载、列表查询。<code>tknpkkj</code> 用于从源码目录生成 <code>.tkn</code> 包。</p>
+    <pre>.tkn 包结构：
+    ── metadata          # 包信息（name, version, description）
+    ── rootfs/           # 安装到系统根目录的文件
+    ── post-install.sh   # 安装后执行脚本（可选）</pre>
+
+    <h2>🧬 版本路线图</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.0</span>
+            <span class="date">2026-07-22</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">初始发布：<code>tsukine_top</code> / <code>net</code> / <code>net_ui</code></div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.1</span>
+            <span class="date">2026-07-22</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc"><code>reboot</code> / <code>shutdown</code>，<code>net</code> 守护进程化，<code>top</code> 过滤</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.2</span>
+            <span class="date">2026-07-23</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc"><code>ping</code> / <code>iwr</code>，命令软链接</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.3</span>
+            <span class="date">2026-07-23</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc"><code>dash</code> 替换 BusyBox shell，提示符 <code>~#</code></div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.4</span>
+            <span class="date">2026-07-23</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc"><code>nano</code> 文本编辑器移植</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.5</span>
+            <span class="date">2026-07-24</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">内核模块版本号修复，模块加载成功</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.6</span>
+            <span class="date">2026-07-24</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">用户账户系统（<code>root</code> / <code>dmin</code>）</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Indev-0.1.7</span>
+            <span class="date">2026-07-24</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">自动主机名，提示符优化，<code>[OK]</code> / <code>[WARNING]</code> 状态检查</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Infdev-0.2.0</span>
+            <span class="date">2026-07-25</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">持久化存储：系统从硬盘启动，<code>/</code> 可读写</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Infdev-0.2.1</span>
+            <span class="date">2026-07-25</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">包管理工具：<code>tknpkg</code> + <code>tknpkkj</code></div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Infdev-0.2.2</span>
+            <span class="date">2026-07-25</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">文件系统规范化（FHS 目录结构）</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Infdev-0.2.3</span>
+            <span class="date">2026-07-25</span>
+            <span class="badge badge-done">✅ 已完成</span>
+            <div class="desc">网络层重构：配置文件支持（静态 IP / DHCP / 回退）</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Infdev-0.2.4</span>
+            <span class="date">进行中</span>
+            <span class="badge badge-wip">🔄 进行中</span>
+            <div class="desc">实体机适配：UEFI/BIOS 引导，硬件驱动加载</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Alpha-0.3.0</span>
+            <span class="date">计划中</span>
+            <span class="badge badge-future">⬜ 未开始</span>
+            <div class="desc">图形界面基础（X11 / TinyX + 窗口管理器 + 护程序）</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">Beta-1.0.0</span>
+            <span class="date">计划中</span>
+            <span class="badge badge-future">⬜ 未开始</span>
+            <div class="desc">第一个稳定版本，功能冻结，仅修 Bug</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="ver">正式版 2.0.0</span>
+            <span class="date">未来</span>
+            <span class="badge badge-future">🔮 未来</span>
+            <div class="desc">音乐创作工具集成（Ardour / LMMS / OpenUTAU 等）</div>
+        </div>
+
+    </div>
+
+    <h2>🖥️ 构建指南（简版）</h2>
+    <p>完整构建指南请参见 <a href="https://github.com/tsutokiteo/TsukineOS/wiki/Building-Guide" style="color: #f0c060;">Wiki</a>。</p>
+    <pre>
+# 1. 获取 Linux 6.6 内核源码
+wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.tar.xz
+
+# 2. 配置并编译内核
+make defconfig
+make LOCALVERSION= bzImage
+
+# 3. 构建 BusyBox（静态编译）
+make menuconfig  # 开启 Build static binary
+make
+make CONFIG_PREFIX=/path/to/rootfs install
+
+# 4. 构建 dash
+./configure --enable-static
+make
+cp src/dash /path/to/rootfs/bin/
+
+# 5. 编译自研工具
+gcc -static -o tsukine_top tsukine_top.c -lncurses -ltinfo
+
+# 6. 打包 initrd
+cd rootfs && find . -print0 | cpio --null -ov --format=newc | gzip -9 &gt; ../initrd.gz
+    </pre>
+
+    <h2>📂 配置文件</h2>
+    <table>
+        <tr><th>文件</th><th>用途</th></tr>
+        <tr><td><code>/etc/profile</code></td><td>环境变量和提示符设置</td></tr>
+        <tr><td><code>/etc/passwd</code></td><td>用户账户信息</td></tr>
+        <tr><td><code>/etc/network/interfaces</code></td><td>网络配置（静态 IP / DHCP）</td></tr>
+        <tr><td><code>/var/lib/tknpkg/db</code></td><td>已安装包数据库</td></tr>
+        <tr><td><code>/var/log/tsukine_net.log</code></td><td>网络服务日志</td></tr>
+    </table>
+
+    <hr>
+
+    <div class="footer">
+        <p>Tsukine OS · 月ね！🌙</p>
+        <p><a href="https://github.com/tsutokiteo/TsukineOS">GitHub</a> · <a href="https://github.com/tsutokiteo/TsukineOS/wiki">Wiki</a> · GPLv2</p>
+        <p style="margin-top:0.5rem; font-size:0.75rem; color:#505068;">文档版本：Infdev-0.2.3</p>
+    </div>
+
+</div>
+</body>
+  </html>
