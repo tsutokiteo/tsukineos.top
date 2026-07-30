@@ -102,6 +102,23 @@
             color: #f0c060;
         }
 
+        .alive-list {
+            background: #12121e;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.3rem 0.5rem;
+            font-size: 0.85rem;
+            color: #8888aa;
+        }
+
+        .alive-list span {
+            display: inline-block;
+        }
+
         .section-title {
             font-size: 1.1rem;
             font-weight: 600;
@@ -165,8 +182,7 @@
 
         <div class="profile">
             <div class="avatar">
-                <!-- 占位月牙，可替换为实际图片 -->
-                🌙
+                <img src="https://github.com/tsutokiteo.png" alt="GitHub 头像">
             </div>
             <div class="profile-info">
                 <h1>津時テオ</h1>
@@ -177,26 +193,70 @@
         </div>
 
         <div class="bio">
-    <p>
-        <strong>津時テオ</strong>，2010 年出生。<br>
-        从小学开始接触计算机，在音乐和代码之间反复横跳。
-    </p>
-    <p style="margin-top: 0.8rem;">
-        活跃于 <strong>ボカロ</strong> 圈，以翻唱调校为主，偶尔产出一些不太成型的 UTAU 音源。
-        做过 <strong>CVVC</strong> 标注，也试着搓过几个音源，成果大多停留在“能出声”阶段。
-    </p>
-    <p style="margin-top: 0.8rem;">
-        2026 年 7 月，出于一次编译失败，开始从零构建 <strong>Tsukine OS</strong>。
-        目前处于 <strong>Infdev → Alpha</strong> 的过渡阶段，主要目标是完成图形界面（GUI）和安装程序（TOSE）。
-    </p>
-    <p style="margin-top: 0.8rem; color: #8888aa; font-size: 0.9rem;">
-        目前就读于高中二年级，尚未决定是继续做系统还是回 Windows 画图标。
-    </p>
-    <p style="margin-top: 0.8rem; color: #8888aa; font-size: 0.9rem;">
-        🌙 月ね！
-    </p>
+            <p>
+                <strong>津時テオ</strong>，2010 年出生。<br>
+                从小学开始接触计算机，在音乐和代码之间反复横跳。
+            </p>
+            <p style="margin-top: 0.8rem;">
+                活跃于 <strong>ボカロ</strong>圈，以翻唱调校为主，偶尔产出一些不太成型的 UTAU 音源。
+                做过 <strong>CVVC</strong> 标注，也试着搓过几个音源，成果大多停留在“能出声”阶段。
+            </p>
+            <p style="margin-top: 0.8rem;">
+                2026 年 7 月，出于一次编译失败，开始从零构建 <strong>Tsukine OS</strong>。
+                目前处于 <strong>Infdev → Alpha</strong> 的过渡阶段，主要目标是完成图形界面（GUI）和安装程序（TOSE）。
+            </p>
+            <p style="margin-top: 0.8rem; color: #8888aa; font-size: 0.9rem;">
+                目前就读于高中二年级，尚未决定是继续做系统还是回 Windows 画图标。
+            </p>
+            <p style="margin-top: 0.8rem; color: #8888aa; font-size: 0.9rem;">
+                🌙 月ね！
+            </p>
         </div>
-  
+
+        <!-- 活着的列表 -->
+        <div class="alive-list">
+            <span>2010年活着</span>
+            <span>2011年活着</span>
+            <span>2012年活着</span>
+            <span>2013年活着</span>
+            <span>2014年活着</span>
+            <span>2015年活着</span>
+            <span>2016年活着</span>
+            <span>2017年活着</span>
+            <span>2018年活着</span>
+            <span>2019年活着</span>
+            <span>2020年活着</span>
+            <span>2021年活着</span>
+            <span>2022年活着</span>
+            <span>2023年活着</span>
+            <span>2024年活着</span>
+            <span>2025年活着</span>
+            <span>2026年活着</span>
+        </div>
+
+        <div class="section-title">📊 GitHub 贡献</div>
+
+        <div class="contribution-wrap">
+            <img src="https://ghchart.rshah.org/tsutokiteo" alt="GitHub 贡献热力图" loading="lazy">
+            <p class="fallback" style="margin-top:0.5rem;">
+                通过 <a href="https://ghchart.rshah.org/tsutokiteo" target="_blank" style="color:#f0c060;">ghchart.rshah.org</a> 生成
+            </p>
+        </div>
+
+        <div class="footer">
+    <span>
+        <a href="https://tsukineos.top/owner" style="color: #9090b0; text-decoration: none;">
+            🌙 Tsukine OS · 月ね！
+        </a>
+    </span>
+    <span>
+        <a href="https://github.com/tsutokiteo/TsukineOS">GitHub</a> ·
+        <a href="https://github.com/tsutokiteo/TsukineOS/wiki">Wiki</a> ·
+        <a href="https://tsukineos.top/owner" style="color: #9090b0; text-decoration: none;">© 2026 Tsutoki Teo</a> ·
+        <span style="color: #505068;">GPLv2</span>
+    </span>
+        </div>
+
     </div>
 </body>
 </html>
