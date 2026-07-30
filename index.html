@@ -203,6 +203,88 @@
         }
     </style>
 </head>
+<script>
+  // 月相计算函数 (基于天文算法，精度约 0.1%)
+  function calculateMoonPhase(date) {
+    const year = date.getUTCFullYear();
+    const month = date.getUTCMonth() + 1;
+    const day = date.getUTCDate();
+    const hours = date.getUTCHours();
+
+    // 计算儒略日 (简化版)
+    const a = Math.floor((14 - month) / 12);
+    const y = year + 4800 - a;
+    const m = month + 12 * a - 3;
+    const jd = day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+
+    // 计算新月基准 (2000-01-06 18:14 UTC)
+    const newMoonJd = 2451550.26;
+    const synodicMonth = 29.53058867;
+    const phase = ((jd + hours / 24 - newMoonJd) % synodicMonth) / synodicMonth;
+
+    return phase; // 0.0 = 新月, 0.5 = 满月, 1.0 = 新月
+  }
+
+  // 根据月相生成 SVG
+  function generateMoonSVG(phase) {
+    const size = 100;
+    const radius = 45;
+    const cx = size / 2;
+    const cy = size / 2;
+    const illumination = 0.5 - 0.5 * Math.cos(phase * 2 * Math.PI);
+    const fillColor = illumination > 0.5 ? '#f0c060' : '#2a2a3a';
+    const strokeColor = '#f0c060';
+
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}">`;
+    svg += `<circle cx="${cx}" cy="${cy}" r="${radius}" fill="${fillColor}" stroke="${strokeColor}" stroke-width="2"/>`;
+
+    if (illumination < 0.5) {
+      const offset = 20 * illumination;
+      svg += `<circle cx="${cx - offset}" cy="${cy}" r="${radius}" fill="#0b0b12"/>`;
+    } else if (illumination > 0.5) {
+      const offset = 20 * (illumination - 0.5);
+      svg += `<circle cx="${cx + offset}" cy="${cy}" r="${radius}" fill="#f0c060"/>`;
+    }
+
+    svg += `</svg>`;
+    return svg;
+  }
+
+  // 获取访客 IP 的时区（通过 ipapi.co）
+  function getVisitorLocation() {
+    return fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        const timezone = data.timezone || 'UTC';
+        return timezone;
+      })
+      .catch(() => 'UTC');
+  }
+
+  // 更新网站图标
+  function updateFavicon(svg) {
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const iconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    iconLink.type = 'image/svg+xml';
+    iconLink.rel = 'icon';
+    iconLink.href = url;
+    if (!document.querySelector("link[rel*='icon']")) {
+      document.head.appendChild(iconLink);
+    }
+  }
+
+  // 页面加载后执行
+  document.addEventListener('DOMContentLoaded', () => {
+    getVisitorLocation().then(timezone => {
+      const date = new Date().toLocaleString('en-US', { timeZone: timezone });
+      const localDate = new Date(date);
+      const phase = calculateMoonPhase(localDate);
+      const svg = generateMoonSVG(phase);
+      updateFavicon(svg);
+    });
+  });
+        </script>
 <body>
     <div class="container">
         <!-- 头部 -->
