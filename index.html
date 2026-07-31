@@ -286,16 +286,14 @@
   });
         </script>
 <script>
-  // 彩蛋触发逻辑（放在主页 index.html 的 </body> 前）
+  // 彩蛋触发逻辑
   document.addEventListener('DOMContentLoaded', function() {
     let clickCount = 0;
     let easterEggActive = false;
     const container = document.querySelector('.container');
 
     container.addEventListener('click', function(e) {
-      // 忽略点击卡片和按钮（避免干扰正常交互）
       if (e.target.closest('.card') || e.target.closest('.btn') || e.target.closest('a')) return;
-
       clickCount++;
       if (clickCount >= 10 && !easterEggActive) {
         easterEggActive = true;
@@ -316,7 +314,7 @@
       const newMoonJd = 2451550.26;
       const synodicMonth = 29.53058867;
       const phase = ((jd + now.getUTCHours() / 24 - newMoonJd) % synodicMonth) / synodicMonth;
-      return phase; // 0-1
+      return phase;
     }
 
     function getMoonEmoji(phase) {
@@ -334,13 +332,11 @@
       const phase = getCurrentMoonPhase();
       const moonEmoji = getMoonEmoji(phase);
 
-      // 多语言“谢谢”
       const thanks = [
         '谢谢', 'Thank you', 'ありがとう', '감사합니다', 'Gracias',
         'Merci', 'Grazie', 'Danke', 'Спасибо', 'Terima kasih'
       ];
 
-      // 创建彩蛋容器
       const overlay = document.createElement('div');
       overlay.style.cssText = `
         position: fixed; inset: 0; z-index: 9999;
@@ -352,7 +348,6 @@
         padding: 2rem;
       `;
 
-      // 随机彩色爱心
       const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💗', '💖', '❤️‍🔥'];
       const heartRow = Array.from({ length: 12 }, () => hearts[Math.floor(Math.random() * hearts.length)]).join(' ');
 
@@ -363,7 +358,7 @@
           ${thanks.map(t => `<span style="display: inline-block; margin: 0 0.4rem;">${t}</span>`).join('')}
         </div>
         <div style="font-size: 1.2rem; color: #a0a0b8; margin: 0.8rem 0 1.2rem 0;">🌙 月ね！</div>
-        <a href="#" id="coffeeLink" style="
+        <a id="coffeeLink" style="
           display: inline-block;
           padding: 0.7rem 2rem;
           border-radius: 40px;
@@ -375,7 +370,7 @@
           border: none;
           cursor: pointer;
           transition: 0.2s;
-        ">☕ 请作者喝一杯咖啡</a>
+        ">☕ 扫码请作者喝一杯咖啡</a>
         <button id="closeEgg" style="
           margin-top: 1.2rem;
           background: transparent;
@@ -390,32 +385,25 @@
 
       document.body.appendChild(overlay);
 
+      // 设置咖啡链接
+      const coffeeLink = overlay.querySelector('#coffeeLink');
+      coffeeLink.href = 'https://tsukineos.top/images/1785456170079.jpg';
+      coffeeLink.target = '_blank';
+
       // 关闭按钮
       overlay.querySelector('#closeEgg').addEventListener('click', function() {
         overlay.remove();
         easterEggActive = false;
       });
 
-      // 点击背景关闭
       overlay.addEventListener('click', function(e) {
         if (e.target === overlay) {
           overlay.remove();
           easterEggActive = false;
         }
       });
-
-      // 咖啡链接（支付宝收款码）
-      const coffeeLink = overlay.querySelector('#coffeeLink');
-      // 这里先放一个示例支付宝链接（实际需要替换为你的收款码链接）
-      coffeeLink.href = 'https://tsukineos.top/images/1785456170079.jpg'; 
-coffeeLink.target = '_blank';
-coffeeLink.textContent = '☕ 扫码请作者喝一杯咖啡';
-        // 实际使用时替换为：
-        // window.location.href = 'alipays://...' 或你的收款码图片链接
-      });
     }
 
-    // 注入动画关键帧
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
       @keyframes fadeInEgg {
@@ -426,7 +414,7 @@ coffeeLink.textContent = '☕ 扫码请作者喝一杯咖啡';
     document.head.appendChild(styleSheet);
   });
 </script>
-
+    
 <body>
     <div class="container">
         <!-- 头部 -->
