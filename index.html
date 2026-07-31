@@ -285,6 +285,148 @@
     });
   });
         </script>
+<script>
+  // 彩蛋触发逻辑（放在主页 index.html 的 </body> 前）
+  document.addEventListener('DOMContentLoaded', function() {
+    let clickCount = 0;
+    let easterEggActive = false;
+    const container = document.querySelector('.container');
+
+    container.addEventListener('click', function(e) {
+      // 忽略点击卡片和按钮（避免干扰正常交互）
+      if (e.target.closest('.card') || e.target.closest('.btn') || e.target.closest('a')) return;
+
+      clickCount++;
+      if (clickCount >= 10 && !easterEggActive) {
+        easterEggActive = true;
+        triggerEasterEgg();
+        clickCount = 0;
+      }
+    });
+
+    function getCurrentMoonPhase() {
+      const now = new Date();
+      const year = now.getUTCFullYear();
+      const month = now.getUTCMonth() + 1;
+      const day = now.getUTCDate();
+      const a = Math.floor((14 - month) / 12);
+      const y = year + 4800 - a;
+      const m = month + 12 * a - 3;
+      const jd = day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+      const newMoonJd = 2451550.26;
+      const synodicMonth = 29.53058867;
+      const phase = ((jd + now.getUTCHours() / 24 - newMoonJd) % synodicMonth) / synodicMonth;
+      return phase; // 0-1
+    }
+
+    function getMoonEmoji(phase) {
+      if (phase < 0.0625 || phase >= 0.9375) return '🌑';
+      if (phase < 0.1875) return '🌒';
+      if (phase < 0.3125) return '🌓';
+      if (phase < 0.4375) return '🌔';
+      if (phase < 0.5625) return '🌕';
+      if (phase < 0.6875) return '🌖';
+      if (phase < 0.8125) return '🌗';
+      return '🌘';
+    }
+
+    function triggerEasterEgg() {
+      const phase = getCurrentMoonPhase();
+      const moonEmoji = getMoonEmoji(phase);
+
+      // 多语言“谢谢”
+      const thanks = [
+        '谢谢', 'Thank you', 'ありがとう', '감사합니다', 'Gracias',
+        'Merci', 'Grazie', 'Danke', 'Спасибо', 'Terima kasih'
+      ];
+
+      // 创建彩蛋容器
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        background: rgba(11, 11, 18, 0.85); backdrop-filter: blur(6px);
+        animation: fadeInEgg 0.6s ease;
+        font-family: 'Segoe UI', -apple-system, sans-serif;
+        text-align: center;
+        padding: 2rem;
+      `;
+
+      // 随机彩色爱心
+      const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💗', '💖', '❤️‍🔥'];
+      const heartRow = Array.from({ length: 12 }, () => hearts[Math.floor(Math.random() * hearts.length)]).join(' ');
+
+      overlay.innerHTML = `
+        <div style="font-size: 3rem; letter-spacing: 0.2rem; margin-bottom: 0.5rem;">${heartRow}</div>
+        <div style="font-size: 4rem; margin-bottom: 0.5rem;">${moonEmoji}</div>
+        <div style="font-size: 2.2rem; font-weight: 300; color: #f0c060; margin-bottom: 0.3rem;">
+          ${thanks.map(t => `<span style="display: inline-block; margin: 0 0.4rem;">${t}</span>`).join('')}
+        </div>
+        <div style="font-size: 1.2rem; color: #a0a0b8; margin: 0.8rem 0 1.2rem 0;">🌙 月ね！</div>
+        <a href="#" id="coffeeLink" style="
+          display: inline-block;
+          padding: 0.7rem 2rem;
+          border-radius: 40px;
+          background: #f0c060;
+          color: #0b0b12;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 1rem;
+          border: none;
+          cursor: pointer;
+          transition: 0.2s;
+        ">☕ 请作者喝一杯咖啡</a>
+        <button id="closeEgg" style="
+          margin-top: 1.2rem;
+          background: transparent;
+          border: 1px solid #3a3a5a;
+          color: #8080a0;
+          padding: 0.4rem 1.2rem;
+          border-radius: 20px;
+          cursor: pointer;
+          font-size: 0.85rem;
+        ">关闭</button>
+      `;
+
+      document.body.appendChild(overlay);
+
+      // 关闭按钮
+      overlay.querySelector('#closeEgg').addEventListener('click', function() {
+        overlay.remove();
+        easterEggActive = false;
+      });
+
+      // 点击背景关闭
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          overlay.remove();
+          easterEggActive = false;
+        }
+      });
+
+      // 咖啡链接（支付宝收款码）
+      const coffeeLink = overlay.querySelector('#coffeeLink');
+      // 这里先放一个示例支付宝链接（实际需要替换为你的收款码链接）
+      coffeeLink.href = 'https://tsukineos.top/images/coffee_qr.png'; 
+coffeeLink.target = '_blank';
+coffeeLink.textContent = '☕ 扫码请作者喝一杯咖啡';
+        // 实际使用时替换为：
+        // window.location.href = 'alipays://...' 或你的收款码图片链接
+      });
+    }
+
+    // 注入动画关键帧
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+      @keyframes fadeInEgg {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+  });
+</script>
+
 <body>
     <div class="container">
         <!-- 头部 -->
